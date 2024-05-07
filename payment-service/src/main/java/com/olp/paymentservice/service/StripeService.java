@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.olp.paymentservice.dto.StripeChargeDto;
+import com.olp.paymentservice.model.Payment;
+import com.olp.paymentservice.repository.PaymentRepository;
 import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
 import com.stripe.model.Charge;
@@ -19,6 +21,8 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 @Slf4j
 public class StripeService {
+
+    private final PaymentRepository paymentRepository;
 
     @Value("${stripe.api.key}")
     private String stripeApiKey;
@@ -47,6 +51,16 @@ public class StripeService {
             if (charge.getPaid()) {
                 chargeRequest.setChargeId(charge.getId());
                 chargeRequest.setSuccess(true);
+
+                // Save payment details to MongoDB
+                Payment payment = new Payment();
+                payment.setStripeChargeId(charge.getId());
+                payment.setUserId(chargeRequest.getUserId());
+                payment.setCourseId(chargeRequest.getCourseId());
+                payment.setAmount(chargeRequest.getAmount());
+                payment.setDescription("Payment for id " + chargeRequest.getAdditionalInfo().getOrDefault("ID_TAG", ""));
+                payment.setMetaData(chargeRequest.getAdditionalInfo());
+                paymentRepository.save(payment);
             }
             
             return chargeRequest;
