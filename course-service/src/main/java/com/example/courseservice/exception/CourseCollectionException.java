@@ -19,4 +19,8 @@ public class CourseCollectionException extends RuntimeException {
     public static String CourseCodeAlreadyAllocated(String code) {
         return "Course with course code " + code + " is already exists!";
     }
+
+    public static String CourseContentNotFoundException(String code) {
+        return "Course content not found with course code " + code + " !";
+    }
 }

@@ -8,6 +8,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Date;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -18,8 +20,10 @@ public class CourseContent {
         @Id
         private String id;
         private String courseId;
+        private String title;
+        private String description;
         @DBRef
         private Media media;
-        private String createdAt;
-        private String updatedAt;
+        private Date createdAt;
+        private Date updatedAt;
 }

@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
 
+import java.util.Date;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -14,8 +16,7 @@ public class Media {
 
         @Id
         private String id;
-        private String type;
         private String url;
-        private String createdAt;
-        private String updatedAt;
+        private Date createdAt;
+        private Date updatedAt;
 }
