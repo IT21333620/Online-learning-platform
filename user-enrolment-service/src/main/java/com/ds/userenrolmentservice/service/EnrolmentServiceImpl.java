@@ -7,6 +7,7 @@ import com.ds.userenrolmentservice.repo.EnrolmentRepo;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -19,20 +20,36 @@ public class EnrolmentServiceImpl implements EnrolmentService {
     @Autowired
     private EnrolmentRepo enrolmentRepo;
 
+    @Autowired
+    private WebClient.Builder webClientBuilder;
+
 
     @Override
-    public Enrolment createEnrolment(Enrolment enrolment) throws
-            ConstraintViolationException, EnrolmentCollectionException {
-        Optional<Enrolment> enrolmentOptional = enrolmentRepo.
-                findByUserIdAndCourseId(enrolment.getUserId(), enrolment.getCourseId());
-        if(enrolmentOptional.isPresent()){
+    public Enrolment createEnrolment(Enrolment enrolment) throws ConstraintViolationException, EnrolmentCollectionException {
+        Optional<Enrolment> enrolmentOptional = enrolmentRepo.findByUserIdAndCourseId(enrolment.getUserId(), enrolment.getCourseId());
+
+        if (enrolmentOptional.isPresent()) {
             throw new EnrolmentCollectionException(EnrolmentCollectionException.AlreadyExists());
-        }else {
+        } else {
             enrolment.setCreatedAt(new Date(System.currentTimeMillis()));
+            // Retrieve course data from the API
+            Object course = webClientBuilder.build()
+                    .get()
+                    .uri("http://localhost:8082/api/v1/courses/get-course-by-code/{code}", enrolment.getCourseId())
+                    .retrieve()
+                    .bodyToMono(Object.class)
+                    .block();
+
+            if (course == null) {
+                throw new EnrolmentCollectionException("Course not found"); // Handle case where course is not found
+            }
+
+            enrolment.setCourse(course);
             enrolmentRepo.save(enrolment);
         }
         return enrolment;
     }
+
 
     @Override
     public List<Enrolment> getAllEnrolments() {

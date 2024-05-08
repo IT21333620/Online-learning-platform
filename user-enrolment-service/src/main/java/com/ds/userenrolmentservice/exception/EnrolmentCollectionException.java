@@ -16,6 +16,10 @@ public class EnrolmentCollectionException extends Exception{
         return "Enrolment with " + userId + " and " + courseId + " not found";
     }
 
+    public static String CannotCreate(String courseId) {
+        return "Cannot create enrolment";
+    }
+
 
     public static String AlreadyExists() {
         return "Enrolment already exists";
