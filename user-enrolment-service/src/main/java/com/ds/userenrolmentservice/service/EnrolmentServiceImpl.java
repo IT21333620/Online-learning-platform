@@ -1,6 +1,6 @@
 package com.ds.userenrolmentservice.service;
 
-import com.ds.userenrolmentservice.DTO.EnrolmentDTO;
+
 import com.ds.userenrolmentservice.exception.EnrolmentCollectionException;
 import com.ds.userenrolmentservice.model.Enrolment;
 import com.ds.userenrolmentservice.repo.EnrolmentRepo;
@@ -8,6 +8,7 @@ import jakarta.validation.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -20,42 +21,76 @@ public class EnrolmentServiceImpl implements EnrolmentService {
 
 
     @Override
-    public EnrolmentDTO createEnrolment(EnrolmentDTO enrolmentDTO) throws ConstraintViolationException, EnrolmentCollectionException {
-        Optional<Enrolment> enrolmentOptional = enrolmentRepo.findByUserIdAndCourseId(enrolmentDTO.getUserId(), enrolmentDTO.getCourseId());
+    public Enrolment createEnrolment(Enrolment enrolment) throws
+            ConstraintViolationException, EnrolmentCollectionException {
+        Optional<Enrolment> enrolmentOptional = enrolmentRepo.
+                findByUserIdAndCourseId(enrolment.getUserId(), enrolment.getCourseId());
         if(enrolmentOptional.isPresent()){
             throw new EnrolmentCollectionException(EnrolmentCollectionException.AlreadyExists());
         }else {
-            Enrolment enrolment = new Enrolment();
-            enrolment.setUserId(enrolmentDTO.getUserId());
-            enrolment.setCourseId(enrolmentDTO.getCourseId());
             enrolment.setCreatedAt(new Date(System.currentTimeMillis()));
             enrolmentRepo.save(enrolment);
         }
-        return enrolmentDTO;
+        return enrolment;
     }
 
     @Override
-    public List<EnrolmentDTO> getAllEnrolments() {
-        return List.of();
+    public List<Enrolment> getAllEnrolments() {
+        List<Enrolment> enrolment = enrolmentRepo.findAll();
+        if (!enrolment.isEmpty()){
+            return enrolment;
+        }else {
+            return new ArrayList<Enrolment>();
+        }
     }
 
     @Override
-    public EnrolmentDTO getSingleEnrolmentById(String id) throws EnrolmentCollectionException {
-        return null;
+    public Enrolment getSingleEnrolmentById(String id) throws EnrolmentCollectionException {
+        Optional<Enrolment> optEnrolment = enrolmentRepo.findById(id);
+        if(optEnrolment.isEmpty()){
+            throw new EnrolmentCollectionException(EnrolmentCollectionException.NotFoundException(id));
+        }else {
+            return optEnrolment.get();
+        }
     }
 
     @Override
-    public List<EnrolmentDTO> getEnrolmentByUserId(String userId) throws EnrolmentCollectionException {
-        return List.of();
+    public List<Enrolment> getEnrolmentByUserId(String userId) throws EnrolmentCollectionException {
+        Optional<Enrolment> optEnrolment = enrolmentRepo.findByUserId(userId);
+        if(optEnrolment.isEmpty()){
+            throw new EnrolmentCollectionException(EnrolmentCollectionException.NotFoundException(userId));
+        }else {
+            return List.of(optEnrolment.get());
+        }
     }
 
     @Override
-    public List<EnrolmentDTO> getEnrolmentByCourseId(String courseId) throws EnrolmentCollectionException {
-        return List.of();
+    public List<Enrolment> getEnrolmentByCourseId(String courseId) throws EnrolmentCollectionException {
+        Optional<Enrolment> optEnrolment = enrolmentRepo.findByCourseId(courseId);
+        if(optEnrolment.isEmpty()){
+            throw new EnrolmentCollectionException(EnrolmentCollectionException.NotFoundException(courseId));
+        }else {
+            return List.of(optEnrolment.get());
+        }
+    }
+
+    @Override
+    public List<Enrolment> getEnrolmentByUserIdAndCourseId(String userId, String courseId) throws EnrolmentCollectionException {
+        Optional<Enrolment> optEnrolment = enrolmentRepo.findByUserIdAndCourseId(userId, courseId);
+        if(optEnrolment.isEmpty()){
+            throw new EnrolmentCollectionException(EnrolmentCollectionException.NotFoundException1(userId, courseId));
+        }else {
+            return List.of(optEnrolment.get());
+        }
     }
 
     @Override
     public void deleteEnrolmentById(String id) throws EnrolmentCollectionException {
-
+        Optional<Enrolment> enrolment = enrolmentRepo.findById(id);
+        if(enrolment.isEmpty()){
+            throw new EnrolmentCollectionException(EnrolmentCollectionException.NotFoundException(id));
+        }else {
+            enrolmentRepo.deleteById(id);
+        }
     }
 }

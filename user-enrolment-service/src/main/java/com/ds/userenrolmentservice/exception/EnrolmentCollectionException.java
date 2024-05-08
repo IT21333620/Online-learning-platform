@@ -12,7 +12,12 @@ public class EnrolmentCollectionException extends Exception{
         return "Enrolment with " + userId + " not found";
     }
 
+    public static String NotFoundException1(String userId, String courseId) {
+        return "Enrolment with " + userId + " and " + courseId + " not found";
+    }
+
+
     public static String AlreadyExists() {
-        return "Enrolment with given name already exists";
+        return "Enrolment already exists";
     }
 }

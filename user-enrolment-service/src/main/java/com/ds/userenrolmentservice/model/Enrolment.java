@@ -20,9 +20,7 @@ public class Enrolment {
     @Id
     private String id;
 
-    @DBRef
     private String userId;
-    @DBRef
     private String courseId;
 
     private Date createdAt;
