@@ -23,6 +23,8 @@ public class Enrolment {
     private String userId;
     private String courseId;
 
+    private Object course;
+
     private Date createdAt;
     private Date updatedAt;
 }
