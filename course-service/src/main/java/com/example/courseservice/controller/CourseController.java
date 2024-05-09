@@ -31,7 +31,7 @@ public class CourseController {
     public ResponseEntity<?> addCourse(@RequestBody Course course){
         try{
             courseService.CreateCourse(course);
-            return ResponseHandler.responseBuilder("Course added successfully", HttpStatus.OK, null);
+            return ResponseHandler.responseBuilder("Course added successfully", HttpStatus.CREATED, null);
         } catch (Exception e){
             return ResponseHandler.responseBuilder(e.getMessage(), HttpStatus.BAD_REQUEST, null);
         }

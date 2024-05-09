@@ -39,9 +39,8 @@ public class CourseContentController {
             Media media = new Media();
             media.setUrl(url);
             media.setCreatedAt(new Date(System.currentTimeMillis()));
-            courseContent.setMedia(media);
-            courseContentService.addCourseContent(ID, courseContent);
-            return ResponseHandler.responseBuilder("Course content added successfully", HttpStatus.OK, null);
+            courseContentService.addCourseContent(ID, courseContent, media);
+            return ResponseHandler.responseBuilder("Course content added successfully", HttpStatus.CREATED, null);
         } catch (CourseCollectionException e){
             return ResponseHandler.responseBuilder(e.getMessage(), HttpStatus.BAD_REQUEST, null);
         }
