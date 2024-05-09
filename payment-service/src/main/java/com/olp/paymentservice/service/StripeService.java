@@ -5,7 +5,9 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
 
+import com.olp.paymentservice.dto.EmailRequestDto;
 import com.olp.paymentservice.dto.StripeChargeDto;
 import com.olp.paymentservice.model.Payment;
 import com.olp.paymentservice.repository.PaymentRepository;
@@ -16,6 +18,7 @@ import com.stripe.model.Charge;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import reactor.core.publisher.Mono;
 
 @Service
 @RequiredArgsConstructor
@@ -23,6 +26,10 @@ import lombok.extern.slf4j.Slf4j;
 public class StripeService {
 
     private final PaymentRepository paymentRepository;
+    private final WebClient webClient;
+
+    @Value("${notification.service.url}")
+    private String notificationServiceUrl;
 
     @Value("${stripe.api.key}")
     private String stripeApiKey;
@@ -61,6 +68,15 @@ public class StripeService {
                 payment.setDescription("Payment for id " + chargeRequest.getAdditionalInfo().getOrDefault("ID_TAG", ""));
                 payment.setMetaData(chargeRequest.getAdditionalInfo());
                 paymentRepository.save(payment);
+
+                // Call notification service
+                EmailRequestDto emailRequestDTO = new EmailRequestDto();
+                emailRequestDTO.setToEmail("designbyhasitha@gmail.com"); // Make this dynamic
+                emailRequestDTO.setSubject("Payment Confirmation");
+                emailRequestDTO.setBody("Your payment was successful.");
+
+                sendNotification(emailRequestDTO);
+                
             }
             
             return chargeRequest;
@@ -68,6 +84,16 @@ public class StripeService {
             log.error("StripeService (charge)", e);
             throw new RuntimeException(e.getMessage());
         }
+    }
+
+    private void sendNotification(EmailRequestDto emailRequestDto) {
+        
+        webClient.post()
+                 .uri(notificationServiceUrl + "/api/send-email")
+                 .body(Mono.just(emailRequestDto), EmailRequestDto.class)
+                 .retrieve()
+                 .bodyToMono(String.class)
+                 .subscribe();
     }
 
 }
