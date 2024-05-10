@@ -28,14 +28,21 @@ public class CourseImpl implements CourseService{
     }
 
     @Override
-    public void CreateCourse(Course course) throws CourseCollectionException {
+    public void CreateCourse(Course course,String Url) throws CourseCollectionException {
+
+        //Checking if the course code or name already exists
         Optional<Course> courseOptional = courseRepo.findByCourseId(course.getCourseId());
         Optional<Course> courseOptional1 = courseRepo.findByName(course.getName());
+
+        //Throwing an exception if the course code or name already exists
         if(courseOptional.isPresent()){
             throw new CourseCollectionException(CourseCollectionException.CourseCodeAlreadyAllocated(course.getId()));
         } else if (courseOptional1.isPresent()){
             throw new CourseCollectionException(CourseCollectionException.CourseNameAlreadyExists(course.getName()));
         } else {
+
+            //Setting the course URL and saving the course
+            course.setUrl(Url);
             course.setApproved(false);
             course.setCreatedAt(new Date(System.currentTimeMillis()));
             courseRepo.save(course);
@@ -44,6 +51,7 @@ public class CourseImpl implements CourseService{
 
     @Override
     public Course getCourseByCode(String id) throws CourseCollectionException {
+        //Checking if the course exists
         Optional<Course> courseOptional = courseRepo.findByCourseId(id);
         if(courseOptional.isEmpty()){
             throw new CourseCollectionException(CourseCollectionException.CourseNotFoundException(id));
@@ -55,6 +63,16 @@ public class CourseImpl implements CourseService{
     @Override
     public List<Course> getApprovedCourses() {
         List<Course> courseList = courseRepo.findApprovedCourses();
+        if(!courseList.isEmpty()){
+            return courseList;
+        } else {
+            return new ArrayList<Course>();
+        }
+    }
+
+    @Override
+    public List<Course> getUnApprovedCourses() {
+        List<Course> courseList = courseRepo.findUnapprovedCourses();
         if(!courseList.isEmpty()){
             return courseList;
         } else {

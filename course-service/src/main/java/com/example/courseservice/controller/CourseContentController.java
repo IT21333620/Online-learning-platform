@@ -18,11 +18,13 @@ import java.util.Date;
 @RequestMapping("/api/v1/content")
 public class CourseContentController {
 
+    // Autowired services for course content and image upload
     @Autowired
     private CourseContentService courseContentService;
     @Autowired
     private ImageUploadService imageService;
 
+    //Retrieve course content by course ID
     @GetMapping("get-course-content/{courseID}")
     private ResponseEntity<?> getCourseContent(@PathVariable("courseID") String code){
         try{
@@ -32,10 +34,14 @@ public class CourseContentController {
         }
     }
 
+    //POST requests to add course content
     @PostMapping("/add-course-content/{courseID}")
     private ResponseEntity<?> addCourseContent(@PathVariable("courseID") String ID, @RequestPart("courseContent") CourseContent courseContent, @RequestPart("file") MultipartFile file){
         try{
+            // Upload image to cloud storage
             String url = imageService.upload(file);
+
+            // Create media object and set URL and creation date
             Media media = new Media();
             media.setUrl(url);
             media.setCreatedAt(new Date(System.currentTimeMillis()));
@@ -51,11 +57,23 @@ public class CourseContentController {
         return imageService.upload(multipartFile);
     }
 
+    // PUT requests to update course content
     @PutMapping("/update-course-content/{courseID}")
     public ResponseEntity<?> updateCourseContent(@PathVariable("courseID") String code, @RequestBody CourseContent courseContent){
         try{
             courseContentService.updateCourseContent(code,courseContent);
             return ResponseHandler.responseBuilder("Course content updated successfully", HttpStatus.OK, null);
+        } catch (CourseCollectionException e){
+            return ResponseHandler.responseBuilder(e.getMessage(), HttpStatus.BAD_REQUEST, null);
+        }
+    }
+
+    // DELETE requests to delete course content
+    @DeleteMapping("/delete-course-content/{courseID}")
+    public ResponseEntity<?> deleteCourseContent(@PathVariable("courseID") String code){
+        try{
+            courseContentService.deleteCourseContent(code);
+            return ResponseHandler.responseBuilder("Course content deleted successfully", HttpStatus.OK, null);
         } catch (CourseCollectionException e){
             return ResponseHandler.responseBuilder(e.getMessage(), HttpStatus.BAD_REQUEST, null);
         }

@@ -11,12 +11,19 @@ import java.util.Optional;
 @Repository
 public interface CourseRepo extends MongoRepository<Course, String> {
 
+    //Find any course by courseId
     @Query("{courseId: ?0}")
     Optional<Course> findByCourseId(String courseId);
 
+    //Find any course by courseName
     @Query("{name: ?0}")
     Optional<Course> findByName(String name);
 
+    //Find approved course by courseCode
     @Query("{approved: true}")
     List<Course> findApprovedCourses();
+
+    //Find unapproved course by courseCode
+    @Query("{approved: false}")
+    List<Course> findUnapprovedCourses();
 }
