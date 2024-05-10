@@ -110,4 +110,19 @@ public class EnrolmentServiceImpl implements EnrolmentService {
             enrolmentRepo.deleteById(id);
         }
     }
+
+    @Override
+    public Enrolment updateEnrolmentStatus(String userId, String courseId, Boolean status)
+            throws EnrolmentCollectionException {
+        Optional<Enrolment> optEnrolment = enrolmentRepo.findByUserIdAndCourseId(userId, courseId);
+        if (optEnrolment.isEmpty()) {
+            throw new EnrolmentCollectionException(EnrolmentCollectionException.NotFoundException1(userId, courseId));
+        } else {
+            Enrolment enrolment = optEnrolment.get();
+            enrolment.setStatus(status);
+            enrolment.setUpdatedAt(new Date());
+            enrolmentRepo.save(enrolment);
+            return enrolment;
+        }
+    }
 }

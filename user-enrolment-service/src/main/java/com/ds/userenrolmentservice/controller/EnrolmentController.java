@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/enrolment")
@@ -86,6 +87,20 @@ public class EnrolmentController {
         try {
             enrolmentService.deleteEnrolmentById(id);
             return ResponseHandler.responseBuilder("Enrolment deleted successfully", HttpStatus.OK, null);
+        } catch (EnrolmentCollectionException e) {
+            return ResponseHandler.responseBuilder(e.getMessage(), HttpStatus.NOT_FOUND, null);
+        }
+    }
+
+    @PutMapping("/updateEnrolmentStatus/{userId}/{courseId}")
+    public ResponseEntity<?> updateEnrolmentStatus(
+            @PathVariable("userId") String userId,
+            @PathVariable("courseId") String courseId,
+            @RequestBody Map<String, Boolean> requestBody) {
+        try {
+            Boolean status = requestBody.get("status");
+            Enrolment updatedEnrolment = enrolmentService.updateEnrolmentStatus(userId, courseId, status);
+            return ResponseHandler.responseBuilder("Enrolment status updated successfully", HttpStatus.OK, updatedEnrolment);
         } catch (EnrolmentCollectionException e) {
             return ResponseHandler.responseBuilder(e.getMessage(), HttpStatus.NOT_FOUND, null);
         }
