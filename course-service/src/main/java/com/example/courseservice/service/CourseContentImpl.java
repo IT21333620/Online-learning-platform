@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CourseContentImpl implements CourseContentService{
@@ -43,5 +44,18 @@ public class CourseContentImpl implements CourseContentService{
         courseContent.setCourseId(ID);
         courseContent.setCreatedAt(new Date(System.currentTimeMillis()));
         courseContentRepo.save(courseContent);
+    }
+
+    @Override
+    public void updateCourseContent(String ID,CourseContent courseContent) throws CourseCollectionException {
+        Optional<CourseContent> courseContent1 = courseContentRepo.findById(ID);
+        if (courseContent1 == null) {
+            throw new CourseCollectionException(CourseCollectionException.CourseNotFoundException(ID));
+        }
+        CourseContent courseContentToUpdate = courseContent1.get();
+        courseContentToUpdate.setTitle(courseContent.getTitle());
+        courseContentToUpdate.setDescription(courseContent.getDescription());
+        courseContentToUpdate.setUpdatedAt(new Date(System.currentTimeMillis()));
+        courseContentRepo.save(courseContentToUpdate);
     }
 }
