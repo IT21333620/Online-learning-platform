@@ -16,6 +16,9 @@
       <change beforePath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/service/CourseContentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/service/CourseContentService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/service/CourseImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/service/CourseImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/service/CourseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/service/CourseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Online-learning-platform.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Online-learning-platform.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,12 +58,12 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "feature/course-service",
-    "last_opened_file_path": "E:/Online-learning-platform",
+    "last_opened_file_path": "D:/2024/SLIIT_Y3_S2/DS - SE3020/W8 - Assignment/new/Online-learning-platform",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "project.propVCSSupport.Confirmation",
+    "settings.editor.selected.configurable": "MavenSettings",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>

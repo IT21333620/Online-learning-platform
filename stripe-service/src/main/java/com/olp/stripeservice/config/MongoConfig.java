@@ -1,4 +1,4 @@
-package com.olp.paymentservice.config;
+package com.olp.stripeservice.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.config.EnableMongoAuditing;
@@ -6,5 +6,4 @@ import org.springframework.data.mongodb.config.EnableMongoAuditing;
 @Configuration
 @EnableMongoAuditing
 public class MongoConfig {
-
 }

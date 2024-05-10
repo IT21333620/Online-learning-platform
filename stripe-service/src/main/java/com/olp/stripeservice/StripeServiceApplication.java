@@ -1,13 +1,13 @@
-package com.olp.paymentservice;
+package com.olp.stripeservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PaymentServiceApplication {
+public class StripeServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PaymentServiceApplication.class, args);
+		SpringApplication.run(StripeServiceApplication.class, args);
 	}
 
 }

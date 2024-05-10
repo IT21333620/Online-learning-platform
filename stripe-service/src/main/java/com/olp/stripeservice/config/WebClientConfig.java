@@ -1,4 +1,4 @@
-package com.olp.paymentservice.config;
+package com.olp.stripeservice.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

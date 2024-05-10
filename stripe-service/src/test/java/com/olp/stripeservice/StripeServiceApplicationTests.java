@@ -1,10 +1,10 @@
-package com.olp.paymentservice;
+package com.olp.stripeservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class PaymentServiceApplicationTests {
+class StripeServiceApplicationTests {
 
 	@Test
 	void contextLoads() {
