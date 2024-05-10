@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class LearnerProgressServiceImpl implements LearnerProgressService{
@@ -93,6 +95,57 @@ public class LearnerProgressServiceImpl implements LearnerProgressService{
         }
     }
 
+    @Override
+    public Map<String, Map<String, Integer>> getCourseIdCounts() {
+        // Retrieve learner progress data from the service
+        LearnerProgressResponse response = getAllProgress();
+
+        Map<String, Map<String, Integer>> courseIdCounts = new HashMap<>();
+
+        if (response != null && !response.getLearnerProgressList().isEmpty()) {
+            List<LearnerProgress> learnerProgressList = response.getLearnerProgressList();
+
+            // Count the occurrences of each courseId
+            for (LearnerProgress progress : learnerProgressList) {
+                String courseId = progress.getCourseId();
+                Map<String, Integer> statusCounts = courseIdCounts.getOrDefault(courseId, new HashMap<>());
+
+                // Increment count for the status of the current progress
+                String status = progress.getStatus() != null ? progress.getStatus() : "unknown";
+                statusCounts.put(status, statusCounts.getOrDefault(status, 0) + 1);
+
+                courseIdCounts.put(courseId, statusCounts);
+            }
+        }
+
+        return courseIdCounts;
+    }
+
+    @Override
+    public Map<String, Map<String, Integer>> getUserIdCounts() {
+        // Retrieve learner progress data from the service
+        LearnerProgressResponse response = getAllProgress();
+
+        Map<String, Map<String, Integer>> userIdCounts = new HashMap<>();
+
+        if (response != null && !response.getLearnerProgressList().isEmpty()) {
+            List<LearnerProgress> learnerProgressList = response.getLearnerProgressList();
+
+            // Count the occurrences of each userId and status
+            for (LearnerProgress progress : learnerProgressList) {
+                String userId = progress.getUserId();
+                Map<String, Integer> statusCounts = userIdCounts.getOrDefault(userId, new HashMap<>());
+
+                // Increment count for the status of the current progress
+                String status = progress.getStatus() != null ? progress.getStatus() : "unknown";
+                statusCounts.put(status, statusCounts.getOrDefault(status, 0) + 1);
+
+                userIdCounts.put(userId, statusCounts);
+            }
+        }
+
+        return userIdCounts;
+    }
 
 
 }
