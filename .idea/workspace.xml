@@ -25,6 +25,20 @@
       <change beforePath="$PROJECT_DIR$/user-enrolment-service/src/main/java/com/ds/userenrolmentservice/model/Enrolment.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-enrolment-service/src/main/java/com/ds/userenrolmentservice/model/Enrolment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-enrolment-service/src/main/java/com/ds/userenrolmentservice/service/EnrolmentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-enrolment-service/src/main/java/com/ds/userenrolmentservice/service/EnrolmentService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-enrolment-service/src/main/java/com/ds/userenrolmentservice/service/EnrolmentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-enrolment-service/src/main/java/com/ds/userenrolmentservice/service/EnrolmentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/controller/CourseContentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/controller/CourseContentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/controller/CourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/controller/CourseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/model/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/model/Course.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/repo/CourseContentRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/repo/CourseContentRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/repo/CourseRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/repo/CourseRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/response/ResponseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/response/ResponseHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/service/CourseContentImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/service/CourseContentImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/service/CourseContentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/service/CourseContentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/service/CourseImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/service/CourseImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/service/CourseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/service/CourseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Online-learning-platform.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Online-learning-platform.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,14 +92,13 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "feature/monitoring-service",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/ashen/Desktop/Deployed AF/Online-learning-platform/monitoring-service/src/main/java/com/ds/monitoringservice",
+    "git-widget-placeholder": "feature/course-service",
+    "last_opened_file_path": "D:/2024/SLIIT_Y3_S2/DS - SE3020/W8 - Assignment/new/Online-learning-platform",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "project.propVCSSupport.Confirmation",
+    "settings.editor.selected.configurable": "MavenSettings",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -124,7 +137,7 @@
       <option name="presentableId" value="Default" />
       <updated>1715046506306</updated>
       <workItem from="1715046509928" duration="11008000" />
-      <workItem from="1715112424647" duration="21682000" />
+      <workItem from="1715112424647" duration="28898000" />
     </task>
     <servers />
   </component>
@@ -139,8 +152,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/controller/CourseContentController.java</url>
-          <line>35</line>
-          <properties class="com.example.courseservice.controller.CourseContentController">
+          <line>38</line>
+          <properties class="com.example.courseservice.controller.CourseContentController" method="addCourseContent">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>

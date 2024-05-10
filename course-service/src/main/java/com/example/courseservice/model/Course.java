@@ -23,6 +23,7 @@ public class Course {
     private String conductorId;
     private boolean approved;
     private String description;
+    private String Url;
     private Date createdAt;
     private Date updatedAt;
 }

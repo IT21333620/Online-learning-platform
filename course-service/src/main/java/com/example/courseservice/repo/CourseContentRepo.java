@@ -10,6 +10,7 @@ import java.util.List;
 @Repository
 public interface CourseContentRepo extends MongoRepository<CourseContent, String>{
 
+    //Find course content by courseId
     @Query("{courseId: ?0}")
     List<CourseContent> findByCode(String courseId);
 
