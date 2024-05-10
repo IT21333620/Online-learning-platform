@@ -11,4 +11,6 @@ public interface CourseContentService {
     public List<CourseContent> getContent(String code)throws CourseCollectionException;
 
     public void addCourseContent(String ID, CourseContent courseContent, Media media) throws CourseCollectionException;
+
+    public void updateCourseContent(String ID,CourseContent courseContent) throws CourseCollectionException;
 }

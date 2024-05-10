@@ -50,4 +50,14 @@ public class CourseContentController {
     public String upload(@RequestParam("file") MultipartFile multipartFile) {
         return imageService.upload(multipartFile);
     }
+
+    @PutMapping("/update-course-content/{courseID}")
+    public ResponseEntity<?> updateCourseContent(@PathVariable("courseID") String code, @RequestBody CourseContent courseContent){
+        try{
+            courseContentService.updateCourseContent(code,courseContent);
+            return ResponseHandler.responseBuilder("Course content updated successfully", HttpStatus.OK, null);
+        } catch (CourseCollectionException e){
+            return ResponseHandler.responseBuilder(e.getMessage(), HttpStatus.BAD_REQUEST, null);
+        }
+    }
 }
