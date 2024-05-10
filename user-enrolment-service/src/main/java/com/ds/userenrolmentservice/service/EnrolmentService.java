@@ -27,4 +27,7 @@ public interface EnrolmentService {
 
     public void deleteEnrolmentById(String id)
             throws EnrolmentCollectionException;
+
+    public Enrolment updateEnrolmentStatus(String userId, String courseId, Boolean status)
+            throws EnrolmentCollectionException;
 }

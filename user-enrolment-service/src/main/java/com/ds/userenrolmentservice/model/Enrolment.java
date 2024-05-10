@@ -27,4 +27,6 @@ public class Enrolment {
 
     private Date createdAt;
     private Date updatedAt;
+
+    private Boolean status;
 }
