@@ -26,4 +26,8 @@ public interface CourseRepo extends MongoRepository<Course, String> {
     //Find unapproved course by courseCode
     @Query("{approved: false}")
     List<Course> findUnapprovedCourses();
+
+    //find any course by conductorId
+    @Query("{conductorId: ?0}")
+    List<Course> findCoursesByConductorId(String conductorId);
 }
