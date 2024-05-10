@@ -16,4 +16,6 @@ public interface CourseService {
     public List<Course> getApprovedCourses();
 
     public List<Course> getUnApprovedCourses();
+
+    public List<Course> getAllCoursesByConductorId(String conductorId);
 }

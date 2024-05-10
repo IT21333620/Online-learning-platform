@@ -26,14 +26,8 @@
       <change beforePath="$PROJECT_DIR$/user-enrolment-service/src/main/java/com/ds/userenrolmentservice/service/EnrolmentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-enrolment-service/src/main/java/com/ds/userenrolmentservice/service/EnrolmentService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-enrolment-service/src/main/java/com/ds/userenrolmentservice/service/EnrolmentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-enrolment-service/src/main/java/com/ds/userenrolmentservice/service/EnrolmentServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/controller/CourseContentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/controller/CourseContentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/controller/CourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/controller/CourseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/model/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/model/Course.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/repo/CourseContentRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/repo/CourseContentRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/repo/CourseRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/repo/CourseRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/response/ResponseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/response/ResponseHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/service/CourseContentImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/service/CourseContentImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/service/CourseContentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/service/CourseContentService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/service/CourseImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/service/CourseImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/service/CourseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/com/example/courseservice/service/CourseService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/Online-learning-platform.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Online-learning-platform.iml" afterDir="false" />
@@ -137,7 +131,7 @@
       <option name="presentableId" value="Default" />
       <updated>1715046506306</updated>
       <workItem from="1715046509928" duration="11008000" />
-      <workItem from="1715112424647" duration="28898000" />
+      <workItem from="1715112424647" duration="29660000" />
     </task>
     <servers />
   </component>

@@ -76,6 +76,17 @@ public class CourseController {
         }
     }
 
+    // Get request to get all courses by conductorId
+    @GetMapping("Get-all-courses-by-conductorId/{conductorId}")
+    public ResponseEntity<?> getAllCoursesByConductorId(@PathVariable("conductorId") String conductorId){
+        List<Course> courseList = courseService.getAllCoursesByConductorId(conductorId);
+        if(!courseList.isEmpty()){
+            return ResponseHandler.responseBuilder("Get all courses by conductorId",  HttpStatus.OK ,courseList);
+        } else {
+            return ResponseHandler.responseBuilder("No courses available", HttpStatus.NOT_FOUND, null);
+        }
+    }
+
 
 
 

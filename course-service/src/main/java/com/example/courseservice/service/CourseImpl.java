@@ -80,5 +80,15 @@ public class CourseImpl implements CourseService{
         }
     }
 
+    @Override
+    public List<Course> getAllCoursesByConductorId(String conductorId) {
+        List<Course> courseList = courseRepo.findCoursesByConductorId(conductorId);
+        if(!courseList.isEmpty()){
+            return courseList;
+        } else {
+            return new ArrayList<Course>();
+        }
+    }
+
 
 }
