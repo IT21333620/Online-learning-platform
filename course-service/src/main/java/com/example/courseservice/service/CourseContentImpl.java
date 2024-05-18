@@ -52,6 +52,17 @@ public class CourseContentImpl implements CourseContentService{
     }
 
     @Override
+    public CourseContent getContentByID(String ID) throws CourseCollectionException {
+            //Checking if the course exists
+            Optional<CourseContent> courseContent = courseContentRepo.findById(ID);
+            if (courseContent == null) {
+                throw new CourseCollectionException(CourseCollectionException.CourseNotFoundException(ID));
+            }
+
+            return courseContent.get();
+    }
+
+    @Override
     public void updateCourseContent(String ID,CourseContent courseContent) throws CourseCollectionException {
 
         //Checking if the course exists

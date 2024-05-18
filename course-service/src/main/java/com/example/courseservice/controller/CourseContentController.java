@@ -16,6 +16,7 @@ import java.util.Date;
 
 @RestController
 @RequestMapping("/api/v1/content")
+@CrossOrigin("*")
 public class CourseContentController {
 
     // Autowired services for course content and image upload
@@ -51,6 +52,16 @@ public class CourseContentController {
             return ResponseHandler.responseBuilder(e.getMessage(), HttpStatus.BAD_REQUEST, null);
         }
     }
+
+    @GetMapping("/get-course-content-By-ID/{contentID}")
+    private ResponseEntity<?> getCourseContentByID(@PathVariable("contentID") String code){
+        try{
+            return ResponseHandler.responseBuilder("Course content found", HttpStatus.OK, courseContentService.getContentByID(code));
+        } catch (CourseCollectionException e){
+            return ResponseHandler.responseBuilder(e.getMessage(), HttpStatus.BAD_REQUEST, null);
+        }
+    }
+
 
     @PostMapping
     public String upload(@RequestParam("file") MultipartFile multipartFile) {

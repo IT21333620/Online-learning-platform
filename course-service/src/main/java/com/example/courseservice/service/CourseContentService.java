@@ -12,6 +12,9 @@ public interface CourseContentService {
 
     public void addCourseContent(String ID, CourseContent courseContent, Media media) throws CourseCollectionException;
 
+    public CourseContent getContentByID(String ID) throws CourseCollectionException;
+
+
     public void updateCourseContent(String ID,CourseContent courseContent) throws CourseCollectionException;
 
     public void deleteCourseContent(String ID) throws CourseCollectionException;
